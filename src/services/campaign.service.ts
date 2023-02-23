@@ -1,3 +1,4 @@
+import { Campaign } from "../models/Campaign.model";
 import { campaignRepository } from "../repositories/campaign.repostiory";
 
 class CampaignService {
@@ -7,10 +8,12 @@ class CampaignService {
     return await campaignRepository.getAllCampaigns();
   }
 
-  async createCampaign() {
+  async createCampaign(campaign: { name: string }) {
+    return await campaignRepository.createCampaign(new Campaign(campaign.name));
   }
 
-  async deleteCampaign() {
+  async deleteCampaign(id: string) {
+    return await campaignRepository.deleteCampaign(id);
   }
 }
 

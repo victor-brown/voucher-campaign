@@ -19,24 +19,13 @@ app.use(helmet());
 app.use(morgan(config.morgan));
 app.use(bodyParser.json());
 
-// Define routes
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World");
 });
-// app.use("/api", (req, res, next) => {
-//   try {
-//     // code block to be executed
-//     throw createError("InternalServerError");
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 app.use("/campaigns", campaignRouter);
 
 app.use(errorHandler);
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

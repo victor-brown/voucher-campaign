@@ -1,4 +1,4 @@
-import { Connection, createConnection } from "mysql";
+import { Connection } from "mysql";
 import connection from "../database/connection";
 import { Campaign } from "../models/campaign.model";
 
@@ -24,7 +24,6 @@ class CampaignRepository {
 
     return new Promise<string>((resolve, reject) => {
       this.connection.query(sql, campaign, (err, result) => {
-        console.log(result);
         return err ? reject(err) : resolve(result);
       });
     });

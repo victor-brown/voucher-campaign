@@ -7,6 +7,7 @@ import { errorHandler } from "./utils/errorHandler";
 import { createError } from "./errors/ErrorFactory";
 import bodyParser from "body-parser";
 import campaignRouter from "./routes/campaign.router";
+import voucherRouter from "./routes/voucher.router";
 
 const app = express();
 const port = config.port;
@@ -23,6 +24,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello World");
 });
 app.use("/campaigns", campaignRouter);
+app.use("/vouchers", voucherRouter);
 
 app.use(errorHandler);
 

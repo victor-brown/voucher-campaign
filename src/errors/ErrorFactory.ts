@@ -35,6 +35,7 @@ class InternalServerError extends AppError {
 
 function createError(type: ErrorType, options: ErrorOptions = {}): AppError {
   const { message, code } = options;
+
   switch (type) {
     case "NotFoundError":
       return new NotFoundError(message);

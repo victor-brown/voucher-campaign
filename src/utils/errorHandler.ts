@@ -18,16 +18,25 @@ function errorHandler(
 
   if (err instanceof NotFoundError) {
     statusCode = 404;
-    error = createError("NotFoundError");
+    error = createError("NotFoundError", {
+      message: err.message,
+      code: err.code,
+    });
   } else if (err instanceof BadRequestError) {
     statusCode = 400;
-    error = createError("BadRequestError");
+    error = createError("BadRequestError", {
+      message: err.message,
+      code: err.code,
+    });
   } else if (err instanceof InternalServerError) {
     statusCode = 500;
-    error = createError("InternalServerError");
+    error = createError("InternalServerError", {
+      message: err.message,
+      code: err.code,
+    });
   } else {
     error = createError("InternalServerError", {
-      message: "An unknown error occurred",
+      message: err.message || "An unknown error occurred",
       code: "UNKNOWN_ERROR",
     });
   }
